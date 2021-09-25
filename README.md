@@ -6,8 +6,41 @@ Angular guide for teams that look for consistency through best practices.
 
 ## Table of Contents
 
+1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Use trackBy along with ngFor](#use-trackby-along-with-ngfor)
 1. [Use Lazy Loading](#use-lazy-loading)
+
+## Avoid Logic in Templates
+
+If you have any sort of logic in your templates, even if it is a simple && clause, it is good to extract it out into its component.
+
+***Why?***: Having logic in the template means that it is not possible to unit test it, and therefore it is more prone to bugs when changing template code.
+
+**Before**
+
+```html
+<p *ngIf="role === 'developer'">Status: Developer</p>
+```
+
+```ts
+@Input() role?: Role;
+```
+
+**After**
+
+```html
+<p *ngIf="isDeveloper"></p>
+```
+
+```ts
+@Input role?: Role;
+
+get isDeveloper(): boolean {
+  return this.role === 'developer';
+}
+```
+
+**[Back to top](#table-of-contents)**
 
 ## Use trackBy along with ngFor
 

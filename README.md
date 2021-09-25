@@ -8,6 +8,7 @@ Angular guide for teams that look for consistency through best practices.
 
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Subscribe in Template Using Async Pipe](#subscribe-in-template-using-async-pipe)
+1. [Avoid Having Subscriptions Inside Subscriptions](#avoid-having-subscriptions-inside-subscriptions)
 1. [Use trackBy along with ngFor](#use-trackby-along-with-ngfor)
 1. [Use Lazy Loading](#use-lazy-loading)
 
@@ -81,6 +82,40 @@ ngOnDestroy(): void {
 
 ```ts
 textToDisplay$ = this.textService.pipe(map(value => value.item));
+```
+
+**[Back to top](#table-of-contents)**
+
+## Avoid Having Subscriptions Inside Subscriptions
+
+Sometimes you may want values from more than one observable to perform an action. In this case, avoid subscribing to one observable in to subscribe block of another observable. Instead, use appropriate chaining operators. Chaining operators run on observables from the operator before them. Some chaining operators are: `withLatestFrom`, `combineLatest`, etc.
+
+**Before**
+
+```ts
+firstObservable$.pipe(
+    take(1)
+  )
+  .subscribe(firstValue => {
+    secondObservable$.pipe(
+        take(1)
+      )
+      .subscribe(secondValue => {
+        console.log(`Combined values are: ${firstValue} & ${secondValue}`);
+      });
+  });
+```
+
+**After**
+
+```ts
+firstObservable$.pipe(
+    withLatestFrom(secondObservable$),
+    first()
+  )
+  .subscribe(([firstValue, secondValue]) => {
+      console.log(`Combined values are: ${firstValue} & ${secondValue}`);
+  });
 ```
 
 **[Back to top](#table-of-contents)**

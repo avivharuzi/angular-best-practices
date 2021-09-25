@@ -12,6 +12,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use trackBy along with ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Use Lazy Loading](#use-lazy-loading)
+1. [Use index.ts](#use-index.ts)
 
 ## Avoid Logic in Templates
 
@@ -195,6 +196,36 @@ const routes: Routes = [
     loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule),
   },
 ];
+```
+
+**[Back to top](#table-of-contents)**
+
+## Use index.ts
+
+Instead of remembering multiple source file names, there are some tiny import statements that will fulfill the purpose.
+
+***Why?***: It helps to keep all correlated files in a single location.
+
+**Before**
+
+```ts
+import { uuid } from './../utils/uuid';
+import { convertToTitleCase } from './../utils/convert-to-title-case';
+```
+
+**After**
+
+> utils/index.ts
+
+```ts
+export * from './uuid';
+export * from './convert-to-title-case';
+```
+
+Now we can import all the files from one file.
+
+```ts
+import { uuid, convertToTitleCase } from './../utils';
 ```
 
 **[Back to top](#table-of-contents)**

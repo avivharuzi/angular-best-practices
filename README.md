@@ -10,6 +10,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Subscribe in Template Using Async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Avoid Having Subscriptions Inside Subscriptions](#avoid-having-subscriptions-inside-subscriptions)
 1. [Use trackBy along with ngFor](#use-trackby-along-with-ngfor)
+1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Use Lazy Loading](#use-lazy-loading)
 
 ## Avoid Logic in Templates
@@ -141,6 +142,26 @@ When using `ngFor` to loop over an array in templates, use it with a `trackBy` f
 ```ts
 trackByFn(index, movie: Movie): string {
   return movie.id;
+}
+```
+
+**[Back to top](#table-of-contents)**
+
+## Strings Should Be Safe
+
+If you have a variable of type string that can have only a set of values, instead of declaring it as a string type, you can declare the list of possible values as the type.
+
+***Why?***: By declaring the type of the variable appropriately, we can avoid bugs while writing the code during compile time rather than during runtime.
+
+```ts
+export class ButtonComponent {
+  @Input() type: string;
+}
+```
+
+```ts
+export class ButtonComponent {
+  @Input() type: 'submit' | 'reset' | 'button' = 'button';
 }
 ```
 

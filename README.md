@@ -7,7 +7,7 @@ Angular guide for teams that look for consistency through best practices.
 ## Table of Contents
 
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
-1. [Subscribe in Template](#subscribe-in-template)
+1. [Subscribe in Template Using Async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use trackBy along with ngFor](#use-trackby-along-with-ngfor)
 1. [Use Lazy Loading](#use-lazy-loading)
 
@@ -43,7 +43,7 @@ get isDeveloper(): boolean {
 
 **[Back to top](#table-of-contents)**
 
-## Subscribe in Template
+## Subscribe in Template Using Async Pipe
 
 Avoid subscribing to observables from components and instead subscribe to the observables from the template.
 

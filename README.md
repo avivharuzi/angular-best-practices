@@ -8,6 +8,7 @@ Angular guide for teams that look for consistency through best practices.
 
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Subscribe in Template Using Async Pipe](#subscribe-in-template-using-async-pipe)
+1. [Use Change Detection OnPush](#use-change-detection-onpush)
 1. [Avoid Having Subscriptions Inside Subscriptions](#avoid-having-subscriptions-inside-subscriptions)
 1. [Use trackBy along with ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
@@ -84,6 +85,31 @@ ngOnDestroy(): void {
 
 ```ts
 textToDisplay$ = this.textService.pipe(map(value => value.item));
+```
+
+**[Back to top](#table-of-contents)**
+
+## Use Change Detection OnPush
+
+Use the OnPush change detection strategy to tell Angular there have been no changes. This lets you skip the entire change detection step.
+This change detection works by detecting if some new data has been explicitly pushed into the component, either via a component input or an Observable subscribed to using the async pipe.
+
+***Why?***: The more OnPush components we have the fewer checks Angular needs to perform, means better performance.
+
+```html
+<app-todo [todo]="todo" *ngFor="let todo of todos"></app-todo>
+```
+
+```ts
+@Component({
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class TodoListComponent {
+  @Input() todos;
+}
 ```
 
 **[Back to top](#table-of-contents)**

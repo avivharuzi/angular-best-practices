@@ -1,2 +1,3 @@
-# angular-best-practices
-Angular best practices.
+# Angular Best Practices
+
+[![Angular](assets/angular.png)](https://angular.io)

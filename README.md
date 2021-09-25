@@ -18,18 +18,18 @@ When using `ngFor` to loop over an array in templates, use it with a `trackBy` f
 **Before**
 
 ```html
-<li *ngFor="let item of items">{{ item.title }}</li>
+<li *ngFor="let movie of movies">{{ movie.title }}</li>
 ```
 
 **After**
 
 ```html
-<li *ngFor="let item of items; trackBy: trackByFn">{{ item.title }}</li>
+<li *ngFor="let movie of movies; trackBy: trackByFn">{{ movie.title }}</li>
 ```
 
 ```ts
-trackByFn(index, item): string {
-  return item.id;
+trackByFn(index, movie: Movie): string {
+  return movie.id;
 }
 ```
 
@@ -41,7 +41,7 @@ When possible, try to lazy load the modules in your Angular application. Lazy lo
 
 ***Why?***: This will reduce the size of the application to be loaded and can improve the application boot time by not loading the modules that are not used.
 
-***Before***
+**Before**
 
 ```ts
 const routes: Routes = [
@@ -53,7 +53,7 @@ const routes: Routes = [
 ];
 ```
 
-***After***
+**After**
 
 ```ts
 const routes: Routes = [

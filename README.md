@@ -7,6 +7,7 @@ Angular guide for teams that look for consistency through best practices.
 ## Table of Contents
 
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
+1. [Subscribe in Template](#subscribe-in-template)
 1. [Use trackBy along with ngFor](#use-trackby-along-with-ngfor)
 1. [Use Lazy Loading](#use-lazy-loading)
 
@@ -38,6 +39,48 @@ If you have any sort of logic in your templates, even if it is a simple && claus
 get isDeveloper(): boolean {
   return this.role === 'developer';
 }
+```
+
+**[Back to top](#table-of-contents)**
+
+## Subscribe in Template
+
+Avoid subscribing to observables from components and instead subscribe to the observables from the template.
+
+***Why?***: `async` pipe unsubscribe automatically, and it makes the code simpler by eliminating the need to manually manage subscriptions. It also reduces the risk of accidentally forgetting to unsubscribe a subscription in the component, which would cause a memory leak. This risk can also be mitigated by using a lint rule to detect unsubscribed observables.
+
+**Before**
+
+```html
+<p>{{ textToDisplay }}</p>
+```
+
+```ts
+textToDisplay = '';
+
+ngOnInit(): void {
+  this.textSubscriotion = this.textService
+    .pipe(
+      map(value => value.item),
+    )
+    .subscribe(item => this.textToDisplay = item);
+}
+
+ngOnDestroy(): void {
+  if (this.textSubscriotion) {
+    this.textSubscriotion.unsubscribe();
+  }
+}
+```
+
+**After**
+
+```html
+<p>{{ textToDisplay$ | async }}</p>
+```
+
+```ts
+textToDisplay$ = this.textService.pipe(map(value => value.item));
 ```
 
 **[Back to top](#table-of-contents)**

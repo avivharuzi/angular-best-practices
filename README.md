@@ -94,7 +94,7 @@ textToDisplay$ = this.textService.pipe(map(value => value.item));
 Use the `OnPush` change detection strategy to tell Angular there have been no changes. This lets you skip the entire change detection step.
 This change detection works by detecting if some new data has been explicitly pushed into the component, either via a component input or an Observable subscribed to using the async pipe.
 
-***Why?***: The more OnPush components we have the fewer checks Angular needs to perform, means better performance.
+***Why?***: The more use of `OnPush` in components we have the fewer checks Angular needs to perform, means better performance.
 
 ```html
 <app-todo [todo]="todo" *ngFor="let todo of todos"></app-todo>

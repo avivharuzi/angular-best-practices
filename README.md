@@ -6,6 +6,7 @@ Angular guide for teams that look for consistency through best practices.
 
 ## Table of Contents
 
+1. [Single Responsibility Principle](#single-responsibility-principle)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Subscribe in Template Using Async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use Change Detection OnPush](#use-change-detection-onpush)
@@ -14,6 +15,14 @@ Angular guide for teams that look for consistency through best practices.
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Use Lazy Loading](#use-lazy-loading)
 1. [Use index.ts](#use-index.ts)
+
+## Single Responsibility Principle
+
+It is very important not to create more than one component, service, directive… inside a single file. Every file should be responsible for a **single functionality**.
+
+***Why?***: By doing this, we are keeping our files clean, readable, and maintainable.
+
+**[Back to top](#table-of-contents)**
 
 ## Avoid Logic in Templates
 

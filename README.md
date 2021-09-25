@@ -8,11 +8,12 @@ Angular guide for teams that look for consistency through best practices.
 
 1. [Single Responsibility Principle](#single-responsibility-principle)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
-1. [Subscribe in Template Using Async Pipe](#subscribe-in-template-using-async-pipe)
+1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use Change Detection OnPush](#use-change-detection-onpush)
 1. [Avoid Having Subscriptions Inside Subscriptions](#avoid-having-subscriptions-inside-subscriptions)
-1. [Use trackBy along with ngFor](#use-trackby-along-with-ngfor)
+1. [Use trackBy Along With ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
+1. [Avoid any Type](#avoid-any-type)
 1. [Use Lazy Loading](#use-lazy-loading)
 1. [Use index.ts](#use-index.ts)
 
@@ -56,7 +57,7 @@ get isDeveloper(): boolean {
 
 **[Back to top](#table-of-contents)**
 
-## Subscribe in Template Using Async Pipe
+## Subscribe in Template Using async Pipe
 
 Avoid subscribing to observables from components and instead subscribe to the observables from the template.
 
@@ -157,7 +158,7 @@ firstObservable$.pipe(
 
 **[Back to top](#table-of-contents)**
 
-## Use trackBy along with ngFor
+## Use trackBy Along With ngFor
 
 When using `ngFor` to loop over an array in templates, use it with a `trackBy` function which will return a unique identifier for each item.
 
@@ -198,6 +199,47 @@ export class ButtonComponent {
 ```ts
 export class ButtonComponent {
   @Input() type: 'submit' | 'reset' | 'button' = 'button';
+}
+```
+
+**[Back to top](#table-of-contents)**
+
+## Avoid any Type
+
+Declare variables or constants with proper types other than any.
+
+***Wny?***: This will reduce unintended problems. Another advantage of having good typings in our application is that it makes refactoring easier.
+
+**Before**
+
+```ts
+export class MovieComponent {
+  movie: any;
+  
+  constructor() {
+    this.movie = {
+      // Whatever we want can be decaler here...
+    };
+  }
+}
+```
+
+**After**
+
+```ts
+interface Movie {
+  title: string;
+}
+
+export class MovieComponent {
+  movie: Movie;
+
+  constructor() {
+    this.movie = {
+      title: 'Avengers',
+      // We can't decalre other properties...
+    };
+  }
 }
 ```
 

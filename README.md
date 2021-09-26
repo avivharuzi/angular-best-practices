@@ -34,7 +34,7 @@ Here are some set of rules we need to follow to make our project with the proper
 * Define small functions and limit them to no more than 75 lines.
 * Have consistent names for all symbols. The recommended pattern is `feature.type.ts`.
 * If the values of the variables are intact, then declare it with `const`.
-* Use `dashes` to separate words in the descriptive name and use `dots` to separate the descriptive name from the type.
+* Use `dashes` to separate words in the descriptive name and use `dots` to separate the descriptive name from the type, for example: `movie-list.component.ts`.
 * Names of properties and methods should always be in lower camel case. 
 * Always leave one empty line between imports and modules, such as third party and application imports and third-party modules and custom modules.
 

@@ -7,6 +7,7 @@ Angular guide for teams that look for consistency through best practices.
 ## Table of Contents
 
 1. [Single Responsibility Principle](#single-responsibility-principle)
+1. [Follow Consistent Angular Coding Styles](#follow-consistent-angular-coding-styles)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use Change Detection OnPush](#use-change-detection-onpush)
@@ -22,6 +23,20 @@ Angular guide for teams that look for consistency through best practices.
 It is very important not to create more than one component, service, directive… inside a single file. Every file should be responsible for a **single functionality**.
 
 ***Why?***: By doing this, we are keeping our files clean, readable, and maintainable.
+
+**[Back to top](#table-of-contents)**
+
+## Follow Consistent Angular Coding Styles
+
+Here are some set of rules we need to follow to make our project with the proper coding standard.
+
+* Limit files to 400 Lines of code.
+* Define small functions and limit them to no more than 75 lines.
+* Have consistent names for all symbols. The recommended pattern is `feature.type.ts`.
+* If the values of the variables are intact, then declare it with `const`.
+* Use `dashes` to separate words in the descriptive name and use `dots` to separate the descriptive name from the type.
+* Names of properties and methods should always be in lower camel case. 
+* Always leave one empty line between imports and modules, such as third party and application imports and third-party modules and custom modules.
 
 **[Back to top](#table-of-contents)**
 

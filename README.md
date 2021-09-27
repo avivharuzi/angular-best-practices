@@ -11,6 +11,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Keep Up to Date](#keep-up-to-date)
 1. [Use Angular CLI](#use-angular-cli)
 1. [Use State Management](#use-state-management)
+1. [Use Environment Variables](#use-environment-variables)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use Change Detection OnPush](#use-change-detection-onpush)
@@ -84,6 +85,36 @@ Some benefits of using state management.
 1. The code will be clean and more readable
 1. Makes it easy to debug when something goes wrong
 1. Dev tools are available for tracing and debugging state management libraries
+
+**[Back to top](#table-of-contents)**
+
+## Use Environment Variables
+
+Angular provides environment configurations to declare variables unique for each environment. The default environments are `development` and `production`. We can even add more environments, or add new variables in existing environment files.
+
+Use it when you depend on different values on different environments.
+
+Development environment (the default).
+
+> environment.ts
+
+```ts
+export const environment = {
+  production: false,
+  baseApiUrl: 'http://localhost:8080',
+};
+```
+
+Production environment.
+
+> environment.prod.ts
+
+```ts
+export const environment = {
+  production: true,
+  baseApiUrl: 'https://api.example.com',
+};
+```
 
 **[Back to top](#table-of-contents)**
 

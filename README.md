@@ -9,6 +9,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Single Responsibility Principle](#single-responsibility-principle)
 1. [Follow Consistent Angular Coding Styles](#follow-consistent-angular-coding-styles)
 1. [Keep Up to Date](#keep-up-to-date)
+1. [Use Angular CLI](#use-angular-cli)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use Change Detection OnPush](#use-change-detection-onpush)
@@ -50,6 +51,22 @@ Semantic versioning is a convention used for versioning software. It has a `majo
 You can follow the news about the latest version of Angular from the [CHANGELOG](https://github.com/angular/angular/blob/master/CHANGELOG.md) and make sure you keep your Angular version up to date, ensuring you always get the latest features, bug fixes, and performance enhancements like Ivy.
 
 It would help if you also used [this official tool](https://update.angular.io) when updating your project from one version to the next.
+
+**[Back to top](#table-of-contents)**
+
+## Use Angular CLI
+
+[Angular CLI](https://angular.io/cli) is one of the most powerful accessibility tools available when developing apps with Angular. Angular CLI makes it easy to create an application and follows all the best practices! Angular CLI is a command-line interface tool that is used to initialize, develop, scaffold, maintain and even test and debug Angular applications.
+
+So instead of creating the files and folders manually, use Angular CLI to generate new `components`, `directives`, `modules`, `services`, `pipes` etc.
+
+```shell
+# Install Angular CLI
+npm i -g @angular/cli
+
+# Check Angular CLI version
+ng version
+```
 
 **[Back to top](#table-of-contents)**
 

@@ -10,6 +10,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Follow Consistent Angular Coding Styles](#follow-consistent-angular-coding-styles)
 1. [Keep Up to Date](#keep-up-to-date)
 1. [Use Angular CLI](#use-angular-cli)
+1. [Use State Management](#use-state-management)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use Change Detection OnPush](#use-change-detection-onpush)
@@ -58,7 +59,7 @@ It would help if you also used [this official tool](https://update.angular.io) w
 
 [Angular CLI](https://angular.io/cli) is one of the most powerful accessibility tools available when developing apps with Angular. Angular CLI makes it easy to create an application and follows all the best practices! Angular CLI is a command-line interface tool that is used to initialize, develop, scaffold, maintain and even test and debug Angular applications.
 
-So instead of creating the files and folders manually, use Angular CLI to generate new `components`, `directives`, `modules`, `services`, `pipes` etc.
+So instead of creating the files and folders manually, use Angular CLI to generate new `components`, `directives`, `modules`, `services`, `pipes`, etc.
 
 ```shell
 # Install Angular CLI
@@ -67,6 +68,22 @@ npm i -g @angular/cli
 # Check Angular CLI version
 ng version
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Use State Management
+
+One of the most challenging things in software development is state management. State management in Angular helps in managing state transitions by storing the state of any form of data. In the market, there are several state management libraries for Angular like [NGRX](https://ngrx.io), [NGXS](https://www.ngxs.io), [Akita](https://datorama.github.io/akita), etc. and all of them have different usages and purposes.
+
+We can choose suitable state management for our application before we implement it.
+
+Some benefits of using state management.
+
+1. It enables sharing data between different components
+1. It provides centralized control for state transition
+1. The code will be clean and more readable
+1. Makes it easy to debug when something goes wrong
+1. Dev tools are available for tracing and debugging state management libraries
 
 **[Back to top](#table-of-contents)**
 

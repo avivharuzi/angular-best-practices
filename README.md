@@ -8,6 +8,7 @@ Angular guide for teams that look for consistency through best practices.
 
 1. [Single Responsibility Principle](#single-responsibility-principle)
 1. [Follow Consistent Angular Coding Styles](#follow-consistent-angular-coding-styles)
+1. [Keep Up to Date](#keep-up-to-date)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use Change Detection OnPush](#use-change-detection-onpush)
@@ -37,6 +38,18 @@ Here are some set of rules we need to follow to make our project with the proper
 * Use `dashes` to separate words in the descriptive name and use `dots` to separate the descriptive name from the type, for example: `movie-list.component.ts`.
 * Names of properties and methods should always be in lower camel case. 
 * Always leave one empty line between imports and modules, such as third party and application imports and third-party modules and custom modules.
+
+**[Back to top](#table-of-contents)**
+
+## Keep Up to Date
+
+Angular follows semantic versioning with a new major version released every six months.
+
+Semantic versioning is a convention used for versioning software. It has a `major.minor.patch` format. Angular increments each part when they release `major`, `minor`, or `patch` changes.
+
+You can follow the news about the latest version of Angular from the [CHANGELOG](https://github.com/angular/angular/blob/master/CHANGELOG.md) and make sure you keep your Angular version up to date, ensuring you always get the latest features, bug fixes, and performance enhancements like Ivy.
+
+It would help if you also used [this official tool](https://update.angular.io) when updating your project from one version to the next.
 
 **[Back to top](#table-of-contents)**
 

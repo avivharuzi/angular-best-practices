@@ -19,6 +19,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use trackBy Along With ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Avoid any Type](#avoid-any-type)
+1. [Use Smart and Dumb Components](#avoid-any-type)
 1. [Use Lazy Loading](#use-lazy-loading)
 1. [Use index.ts](#use-index.ts)
 
@@ -335,6 +336,14 @@ export class MovieComponent {
   }
 }
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Use Smart and Dumb Components
+
+This pattern helps to use `OnPush` change detection strategy to tell Angular there have been no changes in the dumb components.
+
+`Smart components` are used in manipulating data, calling the APIs, focussing more on functionalities, and managing states. While `dumb components` are all about cosmetics, they focus more on how they look.
 
 **[Back to top](#table-of-contents)**
 

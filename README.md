@@ -156,9 +156,9 @@ get isDeveloper(): boolean {
 
 When we navigate from one component to the other component, the first component is destroyed and the other component initializes. The first component was subscribed to the Observable and now the component is destroyed. This can cause memory leaks.
 
-### Use takeUntil Operator
+### Use of takeUntil Operator
 
-`takeUntil` operator keeps a check on second Observables and once the value of observables is generated then it will dispose of the subscription and the cycle gets finished.
+`takeUntil` is also an operator. It allows monitoring the Observables and get rid of the subscriptions once the value is emitted by Observables. We can conclude that it secures the Observables from getting leaked.
 
 ```ts
 ngOnInit(): void {
@@ -175,7 +175,7 @@ ngOnDestroy(): void {
 }
 ```
 
-### Use the async Pipe
+### Use of async Pipe
 
 It subscribes to an Observable or Promise and returns to the recent emitted value and unsubscribe when the component is destroyed.
 
@@ -187,9 +187,9 @@ It subscribes to an Observable or Promise and returns to the recent emitted valu
 </ul>
 ```
 
-### Use take(1)
+### Use of take(1)
 
-It makes sure that you’re getting the data only once.
+It takes the value and allows for not subscribing whenever a new value is diagnosed. It takes care that you receive data only once.
 
 ```ts
   this.movieService.getList()

@@ -20,6 +20,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use trackBy Along With ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Avoid any Type](#avoid-any-type)
+1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
 1. [Use Smart and Dumb Components](#use-smart-and-dumb-components)
 1. [Use Lazy Loading](#use-lazy-loading)
 1. [Use index.ts](#use-index.ts)
@@ -43,6 +44,8 @@ Here are some set of rules we need to follow to make our project with the proper
 * Use `dashes` to separate words in the descriptive name and use `dots` to separate the descriptive name from the type, for example: `movie-list.component.ts`.
 * Names of properties and methods should always be in lower camel case. 
 * Always leave one empty line between imports and modules, such as third party and application imports and third-party modules and custom modules.
+
+For more information read it on [Angular coding style guide](https://angular.io/guide/styleguide)
 
 **[Back to top](#table-of-contents)**
 
@@ -385,6 +388,21 @@ export class MovieComponent {
     };
   }
 }
+```
+
+**[Back to top](#table-of-contents)**
+
+## Break Down Into Small Reusable Components
+
+This might be an extension of the Single responsibility principle. Large components are very difficult to debug, manage and test. If the component becomes large, break it down into more reusable smaller components to reduce duplication of the code, so that we can easily manage, maintain and debug with less effort.
+
+```text
+--ParentComponent
+----TitleComponent
+----BodyComponent
+----ListComponent
+------ItemComponent
+----FooterComponent
 ```
 
 **[Back to top](#table-of-contents)**

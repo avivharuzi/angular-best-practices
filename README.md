@@ -13,13 +13,14 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use State Management](#use-state-management)
 1. [Use Environment Variables](#use-environment-variables)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
+1. [Prevent Memory Leaks](#prevent-memory-leaks)
 1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
 1. [Use Change Detection OnPush](#use-change-detection-onpush)
 1. [Avoid Having Subscriptions Inside Subscriptions](#avoid-having-subscriptions-inside-subscriptions)
 1. [Use trackBy Along With ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Avoid any Type](#avoid-any-type)
-1. [Use Smart and Dumb Components](#avoid-any-type)
+1. [Use Smart and Dumb Components](#use-smart-and-dumb-components)
 1. [Use Lazy Loading](#use-lazy-loading)
 1. [Use index.ts](#use-index.ts)
 
@@ -147,6 +148,55 @@ If you have any sort of logic in your templates, even if it is a simple && claus
 get isDeveloper(): boolean {
   return this.role === 'developer';
 }
+```
+
+**[Back to top](#table-of-contents)**
+
+## Prevent Memory Leaks
+
+When we navigate from one component to the other component, the first component is destroyed and the other component initializes. The first component was subscribed to the Observable and now the component is destroyed. This can cause memory leaks.
+
+### Use takeUntil Operator
+
+`takeUntil` operator keeps a check on second Observables and once the value of observables is generated then it will dispose of the subscription and the cycle gets finished.
+
+```ts
+ngOnInit(): void {
+  this.movieService.getListUpdates()
+    .pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe(movies => {
+      this.movies = movies;
+    });
+}
+
+ngOnDestroy(): void {
+  this.ngUnsubscribe.next();
+  this.ngUnsubscribe.complete();
+}
+```
+
+### Use the async Pipe
+
+It subscribes to an Observable or Promise and returns to the recent emitted value and unsubscribe when the component is destroyed.
+
+```html
+<ul *ngif="movieService.getListUpdates() | async as movies">
+  <li *ngFor="let movie of movies">
+    {{ movie.title }}
+  </li>
+</ul>
+```
+
+### Use take(1)
+
+It makes sure that you’re getting the data only once.
+
+```ts
+  this.movieService.getList()
+    .pipe(take(1))
+    .subscribe(movies => {
+      this.movies = movies;
+    });
 ```
 
 **[Back to top](#table-of-contents)**

@@ -13,6 +13,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use State Management](#use-state-management)
 1. [Use Environment Variables](#use-environment-variables)
 1. [HTML Wrapping and Order](#html-wrapping-and-order)
+1. [Wrap Pipes Within Parenthesis](#wrap-pipes-within-parenthesis)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Prevent Memory Leaks](#prevent-memory-leaks)
 1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
@@ -169,6 +170,30 @@ Attributes order:
 </ng-container>
 ```
 
+**[Back to top](#table-of-contents)**
+
+## Wrap Pipes Within Parenthesis
+
+Wrap pipes expressions within parenthesis.
+
+**Why?**: The feeling of division provided by the parenthesis gives a clue that the value is being transformed.
+
+```html
+<ng-container *ngIf="(movies$ | async) as movies">
+  <!-- ... -->
+</ng-container>
+```
+
+When using multiple pipes, it may even be more important:
+
+```html
+<input 
+ [value]="(value$ | async | uppercase | trim)"
+/>
+```
+
+**[Back to top](#table-of-contents)**
+
 ## Avoid Logic in Templates
 
 If you have any sort of logic in your templates, even if it is a simple && clause, it is good to extract it out into its component.
@@ -229,7 +254,7 @@ ngOnDestroy(): void {
 It subscribes to an Observable or Promise and returns to the recent emitted value and unsubscribe when the component is destroyed.
 
 ```html
-<ul *ngIf="movieService.getListUpdates() | async as movies">
+<ul *ngIf="(movieService.getListUpdates() | async) as movies">
   <li *ngFor="let movie of movies">
     {{ movie.title }}
   </li>
@@ -283,7 +308,7 @@ ngOnDestroy(): void {
 **After**
 
 ```html
-<p>{{ textToDisplay$ | async }}</p>
+<p>{{ (textToDisplay$ | async) }}</p>
 ```
 
 ```ts

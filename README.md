@@ -15,6 +15,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Divide Imports](#divide-imports)
 1. [Lifecycle Hooks Interfaces and Order](#lifecycle-hooks-interfaces-and-order)
 1. [Write Logic Outside Lifecycle Hook](#write-logic-outside-lifecycle-hook)
+1. [Component Event Names Rules](#component-event-names-rules)
 1. [HTML Wrapping and Order](#html-wrapping-and-order)
 1. [Wrap Pipes Within Parenthesis](#wrap-pipes-within-parenthesis)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
@@ -206,6 +207,17 @@ export class MyComponent implements OnInit {
   }
 }
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Component Event Names Rules
+
+Follow this rules will help you to decide better event names:
+
+* Do not prefix events/outputs names with `on`. The handler, instead, could be written with such prefix
+* Always specify the entity whose action referred, not only the action itself.
+  If we are describing an event on a component whose **value changed**, the event change could be `valueChange`.
+* Use past-sense or not (`valueChange` or `valueChanged`)
 
 **[Back to top](#table-of-contents)**
 

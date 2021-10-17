@@ -13,6 +13,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use State Management](#use-state-management)
 1. [Use Environment Variables](#use-environment-variables)
 1. [Divide Imports](#divide-imports)
+1. [Lifecycle Hooks Interfaces and Order](#lifecycle-hooks-interfaces-and-order)
 1. [HTML Wrapping and Order](#html-wrapping-and-order)
 1. [Wrap Pipes Within Parenthesis](#wrap-pipes-within-parenthesis)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
@@ -152,6 +153,39 @@ import { MatDialog } from '@angular/material/dialog';
 
 // Local.
 import { AuthFacade } from '@my-project/auth';
+```
+
+**[Back to top](#table-of-contents)**
+
+## Lifecycle Hooks Interfaces and Order
+
+Adding lifecycle hooks interfaces is not mandatory but a suggested practice.
+
+Ideally, they should be defined in the same order they execute.
+
+```ts
+class MyComponent implements OnChanges, OnInit, DoCheck,
+  AfterContentInit, AfterContentChecked, AfterViewInit,
+  AfterViewChecked, OnDestroy {
+
+  constructor() {}
+
+  ngOnChanges(): void {}
+
+  ngOnInit(): void {}
+
+  ngDoCheck(): void {}
+
+  ngAfterContentInit(): void {}
+
+  ngAfterContentChecked(): void {}
+
+  ngAfterViewInit(): void {}
+
+  ngAfterViewChecked(): void {}
+
+  ngOnDestroy(): void {}	
+}
 ```
 
 **[Back to top](#table-of-contents)**

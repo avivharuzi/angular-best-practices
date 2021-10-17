@@ -12,6 +12,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use Angular CLI](#use-angular-cli)
 1. [Use State Management](#use-state-management)
 1. [Use Environment Variables](#use-environment-variables)
+1. [HTML Wrapping and Order](#html-wrapping-and-order)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
 1. [Prevent Memory Leaks](#prevent-memory-leaks)
 1. [Subscribe in Template Using async Pipe](#subscribe-in-template-using-async-pipe)
@@ -122,6 +123,51 @@ export const environment = {
 ```
 
 **[Back to top](#table-of-contents)**
+
+## HTML Wrapping and Order
+
+Do not exceed 80 characters per column for all files: it’s simply much easier to read vertically than horizontally.
+
+### Rules for Writing HTML Tags
+
+* When an element has two or more attributes, write **one attribute** per line
+* Attributes have to be written **in a specific order**
+* Unless using a single attribute, the closing tag has to be written **on the next line**
+* Add structural directives only to `ng-container` elements
+
+Attributes order:
+
+1. Structural directives (`*ngIf`, `*ngFor`, `*ngSwitch`)
+1. Animations (`@myAnimation`)
+1. Template variables (`#myElement`)
+1. Static properties (`id`, `class`, `aria-label`)
+1. Dynamic properties (`[id]`, `[class]`, `[attr.aria-label]`)
+1. Events (`(click)`, `(myEvent)`)
+1. Two-way binding (`[(value)]`)
+
+**Why?**: This can facilitate reading through and understanding the structure of your templates.
+
+**Before**
+
+```html
+<input #myElement (input)="onInputChanged($event)" [(value)]="myModel" *ngIf="canEdit" class="form-control" [attr.placeholder]="placeholder" @fadeIn type="text" />
+```
+
+**After**
+
+```html
+<ng-container *ngIf="canEdit"> 
+  <input
+    @fadeIn
+    #myElement
+    type="text"
+    class="form-control"
+    [attr.placeholder]="placeholder"
+    (input)="onInputChanged($event)"
+    [(value)]="myModel"
+  />
+</ng-container>
+```
 
 ## Avoid Logic in Templates
 

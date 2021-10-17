@@ -14,6 +14,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use Environment Variables](#use-environment-variables)
 1. [Divide Imports](#divide-imports)
 1. [Lifecycle Hooks Interfaces and Order](#lifecycle-hooks-interfaces-and-order)
+1. [Write Logic Outside Lifecycle Hook](#write-logic-outside-lifecycle-hook)
 1. [HTML Wrapping and Order](#html-wrapping-and-order)
 1. [Wrap Pipes Within Parenthesis](#wrap-pipes-within-parenthesis)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
@@ -185,6 +186,24 @@ class MyComponent implements OnChanges, OnInit, DoCheck,
   ngAfterViewChecked(): void {}
 
   ngOnDestroy(): void {}	
+}
+```
+
+**[Back to top](#table-of-contents)**
+
+## Write Logic Outside Lifecycle Hook
+
+Avoid directly writing any logic within the lifecycle hooks, encapsulate logic within private methods and call them within the lifecycle hooks.
+
+```typescript
+export class MyComponent implements OnInit {
+  ngOnInit(): void {
+    this.init();
+  }
+  
+  private init(): void {
+   // ...
+  }
 }
 ```
 

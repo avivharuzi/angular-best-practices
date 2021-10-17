@@ -13,6 +13,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use State Management](#use-state-management)
 1. [Use Environment Variables](#use-environment-variables)
 1. [Divide Imports](#divide-imports)
+1. [Component Properties and Methods Order](#component-properties-and-methods-order)
 1. [Lifecycle Hooks Interfaces and Order](#lifecycle-hooks-interfaces-and-order)
 1. [Write Logic Outside Lifecycle Hook](#write-logic-outside-lifecycle-hook)
 1. [Component Event Names Rules](#component-event-names-rules)
@@ -159,11 +160,55 @@ import { AuthFacade } from '@my-project/auth';
 
 **[Back to top](#table-of-contents)**
 
+## Component Properties and Methods Order
+
+* Add public and private properties above the constructor
+* Add public and private methods right below the constructor or if you have life cycle hooks so after them
+* Locate the `properties` and `methods` with the same decorator close to each other and write empty line in between groups of properties with the same decorator.
+
+```ts
+export class MyComponent implements OnInit {
+  @HostBinding('class.valid')
+  isValid(): boolean {
+    return true;
+  }
+
+  @HostListener('click', ['$event'])
+  onClick(event): void {}
+
+  @Input() value = '';
+  @Input() otherValue = '';
+
+  @Output() valueChanged = new EventEmitter<string>();
+  @Output() otherValueChanged = new EventEmitter<string>();
+
+  @ViewChild(ChildDirective) child!: ChildDirective;
+
+  @ViewChildren(ChildDirective) viewChildren!: QueryList<ChildDirective>;
+
+  @ContentChild(ChildDirective) contentChild!: ChildDirective;
+
+  @ContentChildren(ChildDirective) contentChildren!: QueryList<ChildDirective>;
+
+  private hiddenValue = '';
+
+  constructor() {}
+  
+  ngOnInit(): void {}
+
+  myPublicFunc(): void {}
+  
+  private myPrivateFunc(): void {}
+}
+```
+
+**[Back to top](#table-of-contents)**
+
 ## Lifecycle Hooks Interfaces and Order
 
 Adding lifecycle hooks interfaces is not mandatory but a suggested practice.
 
-Ideally, they should be defined in the same order they execute.
+Ideally, they should be defined in the same order they execute and after the `constructor`.
 
 ```ts
 class MyComponent implements OnChanges, OnInit, DoCheck,

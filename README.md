@@ -183,7 +183,7 @@ ngOnDestroy(): void {
 It subscribes to an Observable or Promise and returns to the recent emitted value and unsubscribe when the component is destroyed.
 
 ```html
-<ul *ngif="movieService.getListUpdates() | async as movies">
+<ul *ngIf="movieService.getListUpdates() | async as movies">
   <li *ngFor="let movie of movies">
     {{ movie.title }}
   </li>
@@ -254,7 +254,7 @@ This change detection works by detecting if some new data has been explicitly pu
 ***Why?***: The more use of `OnPush` in components we have the fewer checks Angular needs to perform, means better performance.
 
 ```html
-<app-todo [todo]="todo" *ngFor="let todo of todos"></app-todo>
+<app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>
 ```
 
 ```ts

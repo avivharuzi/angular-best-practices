@@ -12,6 +12,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use Angular CLI](#use-angular-cli)
 1. [Use State Management](#use-state-management)
 1. [Use Environment Variables](#use-environment-variables)
+1. [Divide Imports](#divide-imports)
 1. [HTML Wrapping and Order](#html-wrapping-and-order)
 1. [Wrap Pipes Within Parenthesis](#wrap-pipes-within-parenthesis)
 1. [Avoid Logic in Templates](#avoid-logic-in-templates)
@@ -125,9 +126,39 @@ export const environment = {
 
 **[Back to top](#table-of-contents)**
 
+## Divide Imports
+
+Keeping your file imports ordered and neat is challenging, especially when using an IDE to auto-add them as you type. As your files grow, they tend to get quite messy.
+
+It's good practice dividing the imports by these types:
+
+1. Angular imports always go at the top
+1. RxJS imports
+1. Third parties (non-core)
+1. Local/Project imports at the end
+
+It’s also a good practice to leave a comment above each group, but it's not required unless there is a lot of imports.
+
+```ts
+// Angular.
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+// RxJS.
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+// Third Parties.
+import { MatDialog } from '@angular/material/dialog';
+
+// Local.
+import { AuthFacade } from '@my-project/auth';
+```
+
+**[Back to top](#table-of-contents)**
+
 ## HTML Wrapping and Order
 
-Do not exceed 80 characters per column for all files: it’s simply much easier to read vertically than horizontally.
+Do not exceed 80 characters per column for all files, it’s simply much easier to read vertically than horizontally.
 
 ### Rules for Writing HTML Tags
 

@@ -168,14 +168,6 @@ import { AuthFacade } from '@my-project/auth';
 
 ```ts
 export class MyComponent implements OnInit {
-  @HostBinding('class.valid')
-  isValid(): boolean {
-    return true;
-  }
-
-  @HostListener('click', ['$event'])
-  onClick(event): void {}
-
   @Input() value = '';
   @Input() otherValue = '';
 
@@ -195,6 +187,14 @@ export class MyComponent implements OnInit {
   constructor() {}
   
   ngOnInit(): void {}
+
+  @HostBinding('class.valid')
+  isValid(): boolean {
+    return true;
+  }
+
+  @HostListener('click', ['$event'])
+  onClick(event): void {}
 
   myPublicFunc(): void {}
   

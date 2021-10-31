@@ -9,6 +9,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Single Responsibility Principle](#single-responsibility-principle)
 1. [Follow Consistent Angular Coding Styles](#follow-consistent-angular-coding-styles)
 1. [Keep Up to Date](#keep-up-to-date)
+1. [Strict Mode](#strict-mode)
 1. [Use Angular CLI](#use-angular-cli)
 1. [Use State Management](#use-state-management)
 1. [Use Environment Variables](#use-environment-variables)
@@ -65,6 +66,35 @@ Semantic versioning is a convention used for versioning software. It has a `majo
 You can follow the news about the latest version of Angular from the [CHANGELOG](https://github.com/angular/angular/blob/master/CHANGELOG.md) and make sure you keep your Angular version up to date, ensuring you always get the latest features, bug fixes, and performance enhancements like Ivy.
 
 It would help if you also used [this official tool](https://update.angular.io) when updating your project from one version to the next.
+
+**[Back to top](#table-of-contents)**
+
+## Strict Mode
+
+The Angular team has moved to apply the strict mode progressively with an option in Angular 10.
+
+From Angular 12 all projects are starting with strict mode enabled by default.
+
+You should check your project is using strict mode and if not update it to use strict mode.
+
+**Why?**: You’ll benefit from the TypeScript’s type system in your templates and gain best practices rules from Angular team. 
+
+```json
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
+```
 
 **[Back to top](#table-of-contents)**
 

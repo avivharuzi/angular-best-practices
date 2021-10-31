@@ -28,6 +28,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use trackBy Along With ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Avoid any Type](#avoid-any-type)
+1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
 1. [Use Smart and Dumb Components](#use-smart-and-dumb-components)
 1. [Use Lazy Loading](#use-lazy-loading)
@@ -632,6 +633,18 @@ export class MovieComponent {
     };
   }
 }
+```
+
+**[Back to top](#table-of-contents)**
+
+## Safe Navigation Operator in HTML Template
+
+To be on the safe side we should use the safe navigation operator while accessing a property from an object in a component’s template. If the object is null, and we try to access a property, we are going to get an exception. But if we use the save navigation `(?)` operator, the template will ignore the null value and will access the property once the object is not the null anymore.
+
+```html
+<ng-container *ngif="movie">
+  <p>{{ movie.details.description }}</p>
+</ng-container>
 ```
 
 **[Back to top](#table-of-contents)**

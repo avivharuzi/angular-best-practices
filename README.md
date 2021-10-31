@@ -32,6 +32,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use Smart and Dumb Components](#use-smart-and-dumb-components)
 1. [Use Lazy Loading](#use-lazy-loading)
 1. [Use index.ts](#use-index.ts)
+1. [Cache API Calls](#cache-api-calls)
 
 ## Single Responsibility Principle
 
@@ -715,6 +716,30 @@ Now we can import all the files from one file.
 
 ```ts
 import { uuid, convertToTitleCase } from './../utils';
+```
+
+**[Back to top](#table-of-contents)**
+
+## Cache API Calls
+
+Caching API calls improves performance and saves memory by limiting server requests to fetch redundant information. Some API responses may not change frequently so we can put some caching mechanism and can store those values from the API. When the same API request is made, we can get a response from the cache. Thus, it speeds up the application and also makes sure that we are not downloading the same information frequently.
+
+You can use for example RxJS `shareReplay` operator.
+
+```ts
+class MoviesService {
+  private commonMovies$: Observable<Movie[]> | null = null;
+
+  
+  getCommonMovies(): Observable<Movie[]> {
+    if (!this.commonMovies$) {
+      this.commonMovies$ = this.http.get<Movie[]>('/api/movies/common').pipe(
+        shareReplay(1)
+      );
+    }
+    return this.commonMovies$;
+  }
+}
 ```
 
 **[Back to top](#table-of-contents)**

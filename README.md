@@ -35,6 +35,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use index.ts](#use-index.ts)
 1. [Cache API Calls](#cache-api-calls)
 1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
+1. [Use Lint Rules](#use-lint-rules)
 
 ## Single Responsibility Principle
 
@@ -763,6 +764,12 @@ class MoviesService {
 CDK (Component Development Kit) Virtual Scroll can be used to display large lists of elements more efficiently. Virtual scrolling enables an efficient way to simulate all values by making the height of the container element equal to the height of the total number of elements.
 
 For more info: [Angular material cdk virtual scroll](https://material.angular.io/cdk/scrolling/overview)
+
+**[Back to top](#table-of-contents)**
+
+## Use Lint Rules
+
+[ESLint](https://github.com/eslint/eslint) and [Stylelint](https://github.com/stylelint/stylelint) have various inbuilt options, it forces the program to be cleaner and more consistent. It is widely supported across all modern editors and can be customized with your own lint rules and configurations. This will ensure consistency and readability of the code.
 
 **[Back to top](#table-of-contents)**
 

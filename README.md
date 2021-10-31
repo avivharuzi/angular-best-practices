@@ -33,6 +33,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use Lazy Loading](#use-lazy-loading)
 1. [Use index.ts](#use-index.ts)
 1. [Cache API Calls](#cache-api-calls)
+1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
 
 ## Single Responsibility Principle
 
@@ -741,6 +742,14 @@ class MoviesService {
   }
 }
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Use CDK Virtual Scroll
+
+CDK (Component Development Kit) Virtual Scroll can be used to display large lists of elements more efficiently. Virtual scrolling enables an efficient way to simulate all values by making the height of the container element equal to the height of the total number of elements.
+
+For more info: [Angular material cdk virtual scroll](https://material.angular.io/cdk/scrolling/overview)
 
 **[Back to top](#table-of-contents)**
 

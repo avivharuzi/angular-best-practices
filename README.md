@@ -14,6 +14,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use State Management](#use-state-management)
 1. [Use Environment Variables](#use-environment-variables)
 1. [Divide Imports](#divide-imports)
+1. [Prefer Observables Over Promises](#prefer-observables-over-promises)
 1. [Component Properties and Methods Order](#component-properties-and-methods-order)
 1. [Lifecycle Hooks Interfaces and Order](#lifecycle-hooks-interfaces-and-order)
 1. [Write Logic Outside Lifecycle Hook](#write-logic-outside-lifecycle-hook)
@@ -193,6 +194,12 @@ import { MatDialog } from '@angular/material/dialog';
 // Local.
 import { AuthFacade } from '@my-project/auth';
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Prefer Observables Over Promises
+
+[Observables](https://rxjs-dev.firebaseapp.com/guide/observable) partly overlaps the standard JavaScript [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) functionality. Both are meant to handle asynchronous code. However, Observables can do so much more than Promises. Observables can resolve to more than just one value, because they are a stream of values. Observables are everywhere in Angular Framework. We can see that, by looking at the Angular `HttpClient`. It returns Observables, even when it is clear, that a HTTP call can never result in more than one response. Mixing Observables with Promises isn't a good solution. That way, we have completely different implementations, that are hardly compatible with each other in different parts of our application.
 
 **[Back to top](#table-of-contents)**
 

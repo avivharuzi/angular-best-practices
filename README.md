@@ -32,7 +32,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Do Not Pass Streams to Components Directly](#do-not-pass-streams-to-components-directly)
 1. [Do Not Pass Streams to Services](#do-not-pass-streams-to-services)
 1. [Do Not Expose Subjects](#do-not-expose-subjects)
-1. [Handle RxJS Errors](#handle-rx-js-errors)
+1. [Handle RxJS Errors](#handle-rxjs-errors)
 1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)

@@ -31,6 +31,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Avoid any Type](#avoid-any-type)
 1. [Do Not Pass Streams to Components Directly](#do-not-pass-streams-to-components-directly)
 1. [Do Not Pass Streams to Services](#do-not-pass-streams-to-services)
+1. [Do Not Expose Subjects](#do-not-expose-subjects)
 1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
@@ -658,6 +659,24 @@ Passing streams to child components is a bad practice because it creates a very 
 ## Do Not Pass Streams to Services
 
 By passing a stream to a service we don't know what's going to happen to it. The stream could be subscribed to, or even combined with another stream that has a longer lifecycle, that could eventually determine the state of our application. Subscriptions might trigger unwanted behavior. It's recommended to use higher order streams in the components for these situations.
+
+**[Back to top](#table-of-contents)**
+
+## Do Not Expose Subjects
+
+In order to avoid side effects to subject value it's better to hide the subject itself in the service and to expose the observable of the subject and function update his values.
+
+```ts
+export class CartService {
+  private selectedItem: BehaviorSubject<CartItem | null> = new BehaviorSubject<CartItem | null>(null);
+
+  readonly selectedItem$: Observable<CartItem | null> = this.selectedItem.asObservable();
+
+  updateSelectedItem(item: CartItem): void {
+    this.selectedItem.next(item);
+  }
+}
+```
 
 **[Back to top](#table-of-contents)**
 

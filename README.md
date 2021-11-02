@@ -33,6 +33,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Do Not Pass Streams to Services](#do-not-pass-streams-to-services)
 1. [Do Not Expose Subjects](#do-not-expose-subjects)
 1. [Handle RxJS Errors](#handle-rxjs-errors)
+1. [Avoid Changing the DOM Directly](#avoid-changing-the-dom-directly)
 1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
@@ -684,6 +685,12 @@ export class CartService {
 ## Handle RxJS Errors
 
 Error handling is an essential part of RxJS. By default, if something goes wrong with an Observable, it just dies. If we don't deal with such errors, it will happen silently, and we won't know why we are not receiving data anymore.
+
+**[Back to top](#table-of-contents)**
+
+## Avoid Changing the DOM Directly
+
+It's important to know that Angular uses Lifecycle Hooks that determine how and when components will be rendered and updated. Direct DOM access or manipulation can corrupt these lifecycle hooks, leading to unexpected behavior of the whole app. Direct access to the DOM can make our application more vulnerable to `XSS attacks`. Use `ElementRef` as the last resort when direct access to DOM is needed. Use templating and data-binding provided by Angular instead. Alternatively we can take a look at `Renderer2` which provides API that can safely be used even when direct access to native elements is not supported.
 
 **[Back to top](#table-of-contents)**
 

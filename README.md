@@ -44,6 +44,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Cache API Calls](#cache-api-calls)
 1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
 1. [Use Angular Service Workers and PWA](#use-angular-service-workers-and-pwa)
+1. [Use Angular Universal](#use-angular-universal)
 1. [Use Lint Rules](#use-lint-rules)
 
 ## Single Responsibility Principle
@@ -864,6 +865,12 @@ Angular service worker is designed to optimize the end user experience of using 
 For more info: [How to use Angular service worker and pwa](https://angular.io/guide/service-worker-getting-started)
 
 **[Back to top](#table-of-contents)**
+
+## Use Angular Universal
+
+A normal Angular application executes in the browser, rendering pages in the DOM in response to user actions. Angular Universal executes on the server, generating static application pages that later get bootstrapped on the client. This means that the application generally renders more quickly, giving users a chance to view the application layout before it becomes fully interactive.
+
+For more info: [Server-side rendering (SSR) with Angular Universal](https://angular.io/guide/universal)
 
 ## Use Lint Rules
 

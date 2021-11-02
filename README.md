@@ -28,6 +28,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use trackBy Along With ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Avoid any Type](#avoid-any-type)
+1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
 1. [Use Smart and Dumb Components](#use-smart-and-dumb-components)
@@ -634,6 +635,33 @@ export class MovieComponent {
     };
   }
 }
+```
+
+**[Back to top](#table-of-contents)**
+
+## Use Immutability
+
+Objects and arrays are the reference types in javascript. If we want to copy them into another object or an array and to modify them, the best practice is to do that in an immutable way using spread operator `…` this will prevent from changing the original object or array.
+
+In Angular, it's very critical since we can modify the original array or object in the service or component and get unexpected behavior.
+
+```ts
+// Somewhere in the code we have list of movies...
+const movies = [
+  {
+    title: 'Avengers',
+    year: 2012
+  },
+];
+
+// And in other place we get the movies list...
+const updatedMovies = [...movies]; // Update with spread operator...
+```
+
+Please notice that using spread operator is copy only one level! you need to use spread operator to each level or instead to use deep cloning like this:
+
+```ts
+const updatedMovies = JSON.parse(JSON.stringify(movies));
 ```
 
 **[Back to top](#table-of-contents)**

@@ -34,6 +34,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use Smart and Dumb Components](#use-smart-and-dumb-components)
 1. [Use Lazy Loading](#use-lazy-loading)
 1. [Use index.ts](#use-index.ts)
+1. [Isolate API Hacks](#isolate-api-hacks)
 1. [Cache API Calls](#cache-api-calls)
 1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
 1. [Use Lint Rules](#use-lint-rules)
@@ -760,6 +761,12 @@ Now we can import all the files from one file.
 ```ts
 import { uuid, convertToTitleCase } from './../utils';
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Isolate API Hacks
+
+Sometimes, we need to add some logic in the code to make up for bugs in the APIs. Instead of having the hacks in components where they are needed, it is better to isolate them in one place like in a function or a service and use them. When fixing the bugs in the APIs, it is easier to look for them in one file rather than looking for the hacks that could be spread across the codebase.
 
 **[Back to top](#table-of-contents)**
 

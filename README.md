@@ -43,6 +43,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Isolate API Hacks](#isolate-api-hacks)
 1. [Cache API Calls](#cache-api-calls)
 1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
+1. [Use Angular Service Workers and PWA](#use-angular-service-workers-and-pwa)
 1. [Use Lint Rules](#use-lint-rules)
 
 ## Single Responsibility Principle
@@ -853,6 +854,14 @@ class MoviesService {
 CDK (Component Development Kit) Virtual Scroll can be used to display large lists of elements more efficiently. Virtual scrolling enables an efficient way to simulate all values by making the height of the container element equal to the height of the total number of elements.
 
 For more info: [Angular material cdk virtual scroll](https://material.angular.io/cdk/scrolling/overview)
+
+**[Back to top](#table-of-contents)**
+
+## Use Angular Service Workers and PWA
+
+Angular service worker is designed to optimize the end user experience of using an application over a slow or unreliable network connection, while also minimizing the risks of serving outdated content.
+
+For more info: [How to use Angular service worker and pwa](https://angular.io/guide/service-worker-getting-started)
 
 **[Back to top](#table-of-contents)**
 

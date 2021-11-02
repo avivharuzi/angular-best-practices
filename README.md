@@ -29,6 +29,8 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use trackBy Along With ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Avoid any Type](#avoid-any-type)
+1. [Do Not Pass Streams to Components Directly](#do-not-pass-streams-to-components-directly)
+1. [Do Not Pass Streams to Services](#do-not-pass-streams-to-services)
 1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
@@ -644,6 +646,18 @@ export class MovieComponent {
   }
 }
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Do Not Pass Streams to Components Directly
+
+Passing streams to child components is a bad practice because it creates a very close link between the parent component and the child component. A component should always receive an object or value and should not even care if that object or value comes from a stream or not. It is better to handle the subscription in the parent component itself. Angular has a feature called the `async` pipe that can be used for this.
+
+**[Back to top](#table-of-contents)**
+
+## Do Not Pass Streams to Services
+
+By passing a stream to a service we don't know what's going to happen to it. The stream could be subscribed to, or even combined with another stream that has a longer lifecycle, that could eventually determine the state of our application. Subscriptions might trigger unwanted behavior. It's recommended to use higher order streams in the components for these situations.
 
 **[Back to top](#table-of-contents)**
 

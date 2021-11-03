@@ -539,7 +539,7 @@ This change detection works by detecting if some new data has been explicitly pu
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent {
-  @Input() todos;
+  @Input() todos: Todo[] = [];
 }
 ```
 

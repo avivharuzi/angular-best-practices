@@ -889,7 +889,7 @@ class MoviesService {
   getCommonMovies(): Observable<Movie[]> {
     if (!this.commonMovies$) {
       this.commonMovies$ = this.httpClient.get<Movie[]>('/api/movies/common').pipe(
-        shareReplay(1)
+        shareReplay(1),
       );
     }
 
@@ -907,7 +907,7 @@ Most providers in angular are designed to act on a global scope. They are then p
 ```ts
 @Component({
   selector: 'app-navbar',
-  providers: [NavbarService]
+  providers: [NavbarService],
 })
 export class NavbarComponent {}
 ```

@@ -234,13 +234,13 @@ export class MyComponent implements OnInit {
   @Output() valueChanged = new EventEmitter<string>();
   @Output() otherValueChanged = new EventEmitter<string>();
 
-  @ViewChild(ChildDirective) child!: ChildDirective;
+  @ViewChild(ChildDirective) child?: ChildDirective;
 
-  @ViewChildren(ChildDirective) viewChildren!: QueryList<ChildDirective>;
+  @ViewChildren(ChildDirective) viewChildren?: QueryList<ChildDirective>;
 
-  @ContentChild(ChildDirective) contentChild!: ChildDirective;
+  @ContentChild(ChildDirective) contentChild?: ChildDirective;
 
-  @ContentChildren(ChildDirective) contentChildren!: QueryList<ChildDirective>;
+  @ContentChildren(ChildDirective) contentChildren?: QueryList<ChildDirective>;
 
   private hiddenValue = '';
 

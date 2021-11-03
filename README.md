@@ -454,7 +454,7 @@ ngOnDestroy(): void {
 
 ### Use of async Pipe
 
-It subscribes to an Observable or Promise and returns to the recent emitted value and unsubscribe when the component is destroyed.
+It subscribes to an `Observable` or `Promise` and returns to the recent emitted value and unsubscribe when the component is destroyed.
 
 ```html
 <ul *ngIf="(movieService.getListUpdates() | async) as movies">

@@ -778,7 +778,7 @@ To be on the safe side we should use the safe navigation operator while accessin
 
 ```html
 <ng-container *ngif="movie">
-  <p>{{ movie.details.description }}</p>
+  <p>{{ movie.details?.description }}</p>
 </ng-container>
 ```
 

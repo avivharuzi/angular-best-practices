@@ -44,6 +44,14 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use index.ts](#use-index.ts)
 1. [Isolate API Hacks](#isolate-api-hacks)
 1. [Cache API Calls](#cache-api-calls)
+1. [Provide Private Services](#provide-private-services)
+1. [Avoid Poorly Structured CSS](#avoid-poorly-structured-css)
+1. [Lack of Meaningful Unit Tests](#lack-of-meaningful-unit-tests)
+1. [Avoid Useless Code Comments](#avoid-useless-code-comments)
+1. [Remove Unused Code](#remove-unused-code)
+1. [Base Component Classes](#base-component-classes)
+1. [Do Not Remove View Encapsulation](#do-not-remove-view-encapsulation)
+1. [Use Reactive Forms](#use-reactive-forms)
 1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
 1. [Use Angular Service Workers and PWA](#use-angular-service-workers-and-pwa)
 1. [Use Angular Universal](#use-angular-universal)
@@ -889,6 +897,68 @@ class MoviesService {
 
 **[Back to top](#table-of-contents)**
 
+## Provide Private Services
+
+Most providers in angular are designed to act on a global scope. They are then provided at an application level (`AppModule`). This makes sense if the use of the global-singleton-pattern is required. However, there are services that do not need to be provided globally. Especially if they are used by just one component. In that case, it can make sense to provide that service inside the component, instead of globally. That is, if the service is directly tied to that component, as shown below.
+
+```ts
+@Component({
+  selector: 'app-navbar',
+  providers: [NavbarService]
+})
+export class NavbarComponent {}
+```
+
+Providers are `tree-shakable`, the Angular compiler removes the associated services from the final output when it determines that our application doesn't use those services. It also minimizes the risk of dead code and reduces the size of our bundles.
+
+**[Back to top](#table-of-contents)**
+
+## Avoid Poorly Structured CSS
+
+Common mistakes are excessive use of deep selectors and inline styles. Inline styles are considered as bad practice due to poor scalability and maintainability. As a rule of thumb, define all styles in the CSS files. Usage of `::ng-deep` to overwrite styles in other components is incredibly popular. Despite being a working solution, it's marked as `deprecated`. The main reason for that is that this mechanism for piercing the style isolation sandbox around a component can potentially encourage bad styling practices. Though, it isn't going away until Angular implements `::part()` and `::theme()` from the CSS Shadow Parts spec, as there is no better alternative.
+
+**[Back to top](#table-of-contents)**
+
+## Lack of Meaningful Unit Tests
+
+Angular CLI encourages writing unit tests by spanning out `*.spec.ts` files with every created component. However, don't leave them empty or be satisfied by configuring the TestBed with component initialization without actual tests. If developers don't write tests, then absence of a test file would clearly indicate the state of affairs to other developers, rather than misleading them by giving a false sense of security with a rudiment `*.spec.ts` file. We need to cover with tests the most fragile parts, rather than covering what's easier to test.
+
+**[Back to top](#table-of-contents)**
+
+## Avoid Useless Code Comments
+
+Comments are considered a best practice, but if we are adding a comment, it's because it's not self-explanatory, and we should choose a better way to implement it.
+
+Good comments are informative comments, when be useful to provide basic information. For example, a comment that contains legal information, or are a warning, when we are working with multiple developers on a project, we could use a comment to warn other developers about certain consequences, or are a to-do comments for tasks a developer thinks should be done, but for some reason can't be done at this moment.
+
+Bad Comments are commented-out code is a common practice, but we shouldn't do it, because other developers will think the code is there for a reason and won't have the courage to delete it. Just delete the code. We have got version control, so the code isn't lost forever. Another case is noise comments. Some comments that we see are just noise. They restate the obvious and serve no real purpose. Redundant comments are comments that are not more informative than the code. These comments only clutter the code.
+
+**[Back to top](#table-of-contents)**
+
+## Remove Unused Code
+
+Unused code or dead code is any code which will never be executed. It may be some condition, loop or any file which was simply created but wasn't used in our project. It is a problem because that code has no sense, and we can drop it. Dead-code Elimination also reduces the size of our bundles and repositories. Less code also increases maintenance, IDE performance and makes it easier to understand. Common mistakes in TypeScript projects are unused imports, variables, functions and private class members.
+
+**[Back to top](#table-of-contents)**
+
+## Base Component Classes
+
+Create a base class component may come in handy when we have lots of reused stuff and don't want to pollute each component with the same code all over. Common situations are when we are creating form components, when we have pages with the same behavior, such as pages with HTML forms. In these examples, having the same code in multiple places means that if we want to make a change to the logic in that code, we must do it in multiple places. We can create a base class with the common data and methods. Thus, we don't have the same duplicate code in different locations in the code base.
+
+**[Back to top](#table-of-contents)**
+
+## Do Not Remove View Encapsulation
+
+In Angular, component CSS styles are encapsulated into the component's view and don't affect the rest of the application. To control how this encapsulation happens on a per component basis, we can set the view encapsulation mode in the component metadata. The default is `Emulated`, and it emulates the behavior of `Shadow DOM` by preprocessing the CSS code to effectively scope the CSS to the component's view. In the `None` mode, styles from the component propagate back to the main HTML and therefore are visible to all components on the page. We can use this option, but we need to be careful and adopt other strategies like nested CSS or naming conventions.
+
+**[Back to top](#table-of-contents)**
+
+## Use Reactive Forms
+
+Angular presents two different methods for creating forms: `template-driven` and `reactive forms`. Reactive forms provide a model-driven approach to handling form inputs whose values change over time. The Reactive approach removes validation logic from the template, keeping the templates clean of validation logic. Reactive forms use an explicit and immutable approach to managing the state of a form at a given point in time. Each change to the form state returns a new state, which maintains the integrity of the model between changes.
+
+**[Back to top](#table-of-contents)**
+
 ## Use CDK Virtual Scroll
 
 CDK (Component Development Kit) Virtual Scroll can be used to display large lists of elements more efficiently. Virtual scrolling enables an efficient way to simulate all values by making the height of the container element equal to the height of the total number of elements.
@@ -910,6 +980,8 @@ For more info: [How to use Angular service worker and pwa](https://angular.io/gu
 A normal Angular application executes in the browser, rendering pages in the DOM in response to user actions. Angular Universal executes on the server, generating static application pages that later get bootstrapped on the client. This means that the application generally renders more quickly, giving users a chance to view the application layout before it becomes fully interactive.
 
 For more info: [Server-side rendering (SSR) with Angular Universal](https://angular.io/guide/universal)
+
+**[Back to top](#table-of-contents)**
 
 ## Use Lint Rules
 

@@ -469,11 +469,11 @@ It subscribes to an `Observable` or `Promise` and returns to the recent emitted 
 It takes the value and allows for not subscribing whenever a new value is diagnosed. It takes care that you receive data only once.
 
 ```ts
-  this.movieService.getList()
-    .pipe(take(1))
-    .subscribe(movies => {
-      this.movies = movies;
-    });
+this.movieService.getList()
+  .pipe(take(1))
+  .subscribe(movies => {
+    this.movies = movies;
+  });
 ```
 
 **[Back to top](#table-of-contents)**

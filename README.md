@@ -29,6 +29,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use trackBy Along With ngFor](#use-trackby-along-with-ngfor)
 1. [Strings Should Be Safe](#strings-should-be-safe)
 1. [Avoid any Type](#avoid-any-type)
+1. [Use Mandatory Inputs](#use-mandatory-inputs)
 1. [Do Not Pass Streams to Components Directly](#do-not-pass-streams-to-components-directly)
 1. [Do Not Pass Streams to Services](#do-not-pass-streams-to-services)
 1. [Do Not Expose Subjects](#do-not-expose-subjects)
@@ -652,6 +653,23 @@ export class MovieComponent {
   }
 }
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Use Mandatory Inputs
+
+To make the requirement explicit we can use the selector in the `@Component` decorator to require that the attribute on our component must exist.
+
+```ts
+@Component({
+  selector: 'movie-list[movies]',
+})
+export class MovieListComponent {
+  @Input() movies: Movies[];
+}
+```
+
+Resulting an error, when we start the application or at compile time when the application is built Ahead of Time (AoT), if the `MovieListComponent` doesn't have an items attribute. This approach improves the readability of the code because helps other developers to integrate this component into their projects, throwing errors, and we don't need to define explicit validations to check if it exists.
 
 **[Back to top](#table-of-contents)**
 

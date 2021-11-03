@@ -888,10 +888,11 @@ class MoviesService {
   
   getCommonMovies(): Observable<Movie[]> {
     if (!this.commonMovies$) {
-      this.commonMovies$ = this.http.get<Movie[]>('/api/movies/common').pipe(
+      this.commonMovies$ = this.httpClient.get<Movie[]>('/api/movies/common').pipe(
         shareReplay(1)
       );
     }
+
     return this.commonMovies$;
   }
 }

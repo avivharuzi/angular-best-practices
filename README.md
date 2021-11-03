@@ -679,7 +679,7 @@ export class MovieListComponent {
 }
 ```
 
-Resulting an error, when we start the application or at compile time when the application is built Ahead of Time (AoT), if the `MovieListComponent` doesn't have an items attribute. This approach improves the readability of the code because helps other developers to integrate this component into their projects, throwing errors, and we don't need to define explicit validations to check if it exists.
+Resulting an error, when we start the application or at compile time when the application is built Ahead of Time (AoT), if the `MovieListComponent` doesn't have a `movies` attribute. This approach improves the readability of the code because helps other developers to integrate this component into their projects, throwing errors, and we don't need to define explicit validations to check if it exists.
 
 **[Back to top](#table-of-contents)**
 

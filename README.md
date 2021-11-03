@@ -34,6 +34,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Do Not Expose Subjects](#do-not-expose-subjects)
 1. [Handle RxJS Errors](#handle-rxjs-errors)
 1. [Avoid Changing the DOM Directly](#avoid-changing-the-dom-directly)
+1. [Avoid Computing Values in the Template](#avoid-computing-values-in-the-template)
 1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
@@ -693,6 +694,26 @@ Error handling is an essential part of RxJS. By default, if something goes wrong
 ## Avoid Changing the DOM Directly
 
 It's important to know that Angular uses Lifecycle Hooks that determine how and when components will be rendered and updated. Direct DOM access or manipulation can corrupt these lifecycle hooks, leading to unexpected behavior of the whole app. Direct access to the DOM can make our application more vulnerable to `XSS attacks`. Use `ElementRef` as the last resort when direct access to DOM is needed. Use templating and data-binding provided by Angular instead. Alternatively we can take a look at `Renderer2` which provides API that can safely be used even when direct access to native elements is not supported.
+
+**[Back to top](#table-of-contents)**
+
+## Avoid Computing Values in the Template
+
+Sometimes in Angular templates, we may be tempted to bind a method in the HTML template. The problem is that the methods are constantly getting called during the Angular Change Detection Cycle.
+
+```html
+<h1>{{ getTitle() }}</h1>
+```
+
+```ts
+export class HomeComponent {
+  getTitle(): string {
+    return 'Home Page';
+  }
+}
+```
+
+It's highly recommended not to use methods calls in Angular template expressions. While method calls in Angular templates are super convenient and technically valid, they may cause serious performance issues because the method is called every time change detection runs. Instead, we can use pure `pipes` or manually calculate the values with `Lifecycle Hooks`.
 
 **[Back to top](#table-of-contents)**
 

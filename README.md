@@ -418,10 +418,10 @@ If you have any sort of logic in your templates, even if it is a simple && claus
 ```
 
 ```ts
-@Input role?: Role;
+public isDeveloper: boolean;
 
-get isDeveloper(): boolean {
-  return this.role === 'developer';
+@Input set role(role?: 'developer' | 'admin' | 'guest'){
+    this.isDeveloper = role === 'developer'
 }
 ```
 
@@ -436,19 +436,18 @@ When we navigate from one component to the other component, the first component 
 `takeUntil` is also an operator. It allows monitoring the Observables and get rid of the subscriptions once the value is emitted by Observables. We can conclude that it secures the Observables from getting leaked.
 
 ```ts
-ngUnsubscribe = new Subject<void>();
+ngUnsubscribe$ = new Subject<void>();
 
 ngOnInit(): void {
   this.movieService.getListUpdates()
-    .pipe(takeUntil(this.ngUnsubscribe))
+    .pipe(takeUntil(this.ngUnsubscribe$))
     .subscribe(movies => {
       this.movies = movies;
     });
 }
 
 ngOnDestroy(): void {
-  this.ngUnsubscribe.next();
-  this.ngUnsubscribe.complete();
+  this.ngUnsubscribe$.next();
 }
 ```
 

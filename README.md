@@ -418,10 +418,11 @@ If you have any sort of logic in your templates, even if it is a simple && claus
 ```
 
 ```ts
-public isDeveloper: boolean;
+isDeveloper: boolean;
 
-@Input set role(role?: 'developer' | 'admin' | 'guest'){
-    this.isDeveloper = role === 'developer'
+@Input()
+set role(role: Role) {
+  this.isDeveloper = role === 'developer';
 }
 ```
 

@@ -56,6 +56,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use Angular Service Workers and PWA](#use-angular-service-workers-and-pwa)
 1. [Use Angular Universal](#use-angular-universal)
 1. [Use Lint Rules](#use-lint-rules)
+1. [Use Storybook](#use-storybook)
 1. [Use Angular DevTools Chrome Extension](#use-angular-devtools-chrome-extension)
 
 ## Single Responsibility Principle
@@ -1004,6 +1005,16 @@ Angular DevTools extends Chrome DevTools adding Angular specific debugging and p
 [Angular DevTools Chrome Extension](https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
 
 [Angular DevTools Overview](https://angular.io/guide/devtools)
+
+**[Back to top](#table-of-contents)**
+
+## Use Storybook
+
+Storybook is an open source tool for building UI components and pages in isolation. It streamlines UI development, testing, and documentation.
+
+***Why?***: By using storybook it enforces us to make better isolated components, easier to search for components that can be used for new developers in the team, great for product team to view the new UI and good documentation for the company UI design.
+
+[Storybook](https://storybook.js.org)
 
 **[Back to top](#table-of-contents)**
 

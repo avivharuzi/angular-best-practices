@@ -49,6 +49,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Lack of Meaningful Unit Tests](#lack-of-meaningful-unit-tests)
 1. [Avoid Useless Code Comments](#avoid-useless-code-comments)
 1. [Remove Unused Code](#remove-unused-code)
+1. [Avoid Using Third-Party Libraries](#avoid-using-third-party-libraries)
 1. [Base Component Classes](#base-component-classes)
 1. [Do Not Remove View Encapsulation](#do-not-remove-view-encapsulation)
 1. [Use Reactive Forms](#use-reactive-forms)
@@ -103,7 +104,7 @@ From Angular 12 all projects are starting with strict mode enabled by default.
 
 You should check your project is using strict mode and if not update it to use strict mode.
 
-**Why?**: You’ll benefit from the TypeScript’s type system in your templates and gain best practices rules from Angular team. 
+***Why?***: You’ll benefit from the TypeScript’s type system in your templates and gain best practices rules from Angular team. 
 
 ```json
 {
@@ -349,7 +350,7 @@ Attributes order:
 1. Events (`(click)`, `(myEvent)`)
 1. Two-way binding (`[(value)]`)
 
-**Why?**: This can facilitate reading through and understanding the structure of your templates.
+***Why?***: This can facilitate reading through and understanding the structure of your templates.
 
 **Before**
 
@@ -379,7 +380,7 @@ Attributes order:
 
 Wrap pipes expressions within parenthesis.
 
-**Why?**: The feeling of division provided by the parenthesis gives a clue that the value is being transformed.
+***Why?***: The feeling of division provided by the parenthesis gives a clue that the value is being transformed.
 
 ```html
 <ng-container *ngIf="(movies$ | async) as movies">
@@ -945,6 +946,14 @@ Bad Comments are commented-out code is a common practice, but we shouldn't do it
 Unused code or dead code is any code which will never be executed. It may be some condition, loop or any file which was simply created but wasn't used in our project. It is a problem because that code has no sense, and we can drop it. Dead-code Elimination also reduces the size of our bundles and repositories. Less code also increases maintenance, IDE performance and makes it easier to understand. Common mistakes in TypeScript projects are unused imports, variables, functions and private class members.
 
 **[Back to top](#table-of-contents)**
+
+## Avoid Using Third-Party Libraries
+
+Usage of third-party libraries should be avoided and should be as final destination.
+
+If you decided to use third-party library try to explain to the team why it was chosen and why it can not be done with Angular built-in libraries, it will make good conversation with the team and maybe could lead to better solutions.
+
+***Why***: Angular comes with a great set of built-in libraries such as routing, forms, HTTP Client, testing and many more. When deciding to add third-party library the bundle size will become bigger and that resulting to slower performance. 
 
 ## Base Component Classes
 

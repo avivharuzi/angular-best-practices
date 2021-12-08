@@ -56,6 +56,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Use Angular Service Workers and PWA](#use-angular-service-workers-and-pwa)
 1. [Use Angular Universal](#use-angular-universal)
 1. [Use Lint Rules](#use-lint-rules)
+1. [Use Angular DevTools Chrome Extension](#use-angular-devtools-chrome-extension)
 
 ## Single Responsibility Principle
 
@@ -989,6 +990,20 @@ For more info: [Server-side rendering (SSR) with Angular Universal](https://angu
 ## Use Lint Rules
 
 [ESLint](https://github.com/eslint/eslint) and [Stylelint](https://github.com/stylelint/stylelint) have various inbuilt options, it forces the program to be cleaner and more consistent. It is widely supported across all modern editors and can be customized with your own lint rules and configurations. This will ensure consistency and readability of the code.
+
+**[Back to top](#table-of-contents)**
+
+## Use Angular DevTools Chrome Extension
+
+Angular DevTools extends Chrome DevTools adding Angular specific debugging and profiling capabilities.
+
+* Understand the structure of your application
+* Preview the state of the directive and the component instances
+* See change detection cycles, what triggered them, and how much time Angular spent in them
+
+[Angular DevTools Chrome Extension](https://chrome.google.com/webstore/detail/angular-devtools/ienfalfjdbdpebioblfackkekamfmbnh)
+
+[Angular DevTools Overview](https://angular.io/guide/devtools)
 
 **[Back to top](#table-of-contents)**
 

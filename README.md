@@ -58,6 +58,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Do Not Remove View Encapsulation](#do-not-remove-view-encapsulation)
 1. [Analyze the Bundle Size](#analyze-the-bundle-size)
 1. [Use CSP To Prevent XSS](#use-csp-to-prevent-xss)
+1. [Use ECMAScript Features](#use-ecmascript-features)
 1. [Use Reactive Forms](#use-reactive-forms)
 1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
 1. [Use Angular Service Workers and PWA](#use-angular-service-workers-and-pwa)
@@ -1133,6 +1134,16 @@ webpack-bundle-analyzer dist/my-app/stats.json
 CSP (Content Security Policy) help us to prevent XSS attacks very easily by restricting what resources can be used in the website.
 
 [How to use CSP](https://developers.google.com/web/fundamentals/security/csp)
+
+**[Back to top](#table-of-contents)**
+
+## Use ECMAScript Features
+
+ECMAScript is one of the JavaScript versions which constantly get updated with new features and functionalities.
+
+Because Angular using the TypeScript language, TypeScript is always updated according to the new ECMAScript features, so you can utilize them in Angular.
+
+[TypeScript Updates](https://www.typescriptlang.org/docs/handbook/release-notes/overview.html)
 
 **[Back to top](#table-of-contents)**
 

@@ -47,6 +47,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Isolate API Hacks](#isolate-api-hacks)
 1. [Cache API Calls](#cache-api-calls)
 1. [Provide Private Services](#provide-private-services)
+1. [Avoid Risky Angular APIs](#avoid-risky-angular-apis)
 1. [Avoid Poorly Structured CSS](#avoid-poorly-structured-css)
 1. [Lack of Meaningful Unit Tests](#lack-of-meaningful-unit-tests)
 1. [Avoid Useless Code Comments](#avoid-useless-code-comments)
@@ -1031,6 +1032,12 @@ export class NavbarComponent {}
 ```
 
 Providers are `tree-shakable`, the Angular compiler removes the associated services from the final output when it determines that our application doesn't use those services. It also minimizes the risk of dead code and reduces the size of our bundles.
+
+**[Back to top](#table-of-contents)**
+
+## Avoid Risky Angular APIs
+
+Avoid Angular APIs marked in the documentation as **Security Risk**. The most common risky API we use is `ElementRef`. It permits direct access to the DOM and can make your application more vulnerable to XSS attacks. Review any use of [ElementRef](https://angular.io/api/core/ElementRef) in your code carefully. Use this API as a last resort when direct access to the DOM is needed. Use templating and data binding provided by Angular, instead. Alternatively, you can take a look at [Renderer2](https://angular.io/api/core/Renderer2), which provides an API that can safely be used even when direct access to native elements is not supported.
 
 **[Back to top](#table-of-contents)**
 

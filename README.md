@@ -38,6 +38,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Avoid Computing Values in the Template](#avoid-computing-values-in-the-template)
 1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
+1. [Sanitize Untrusted Values](#sanitize-untrusted-values)
 1. [Use InjectionToken for Dependency Injection](#use-injectiontoken-for-dependency-injection)
 1. [Prevent Importing Module in Feature Modules](#prevent-importing-module-in-feature-modules)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
@@ -788,6 +789,25 @@ To be on the safe side we should use the safe navigation operator while accessin
 <ng-container *ngif="movie">
   <p>{{ movie.details?.description }}</p>
 </ng-container>
+```
+
+**[Back to top](#table-of-contents)**
+
+## Sanitize Untrusted Values
+
+Unless you enforce Trusted Types, the built-in browser DOM APIs don't automatically protect you from security vulnerabilities. For example, `document`, the node available through `ElementRef`, and many third-party APIs contain unsafe methods. In the same way, if you interact with other libraries that manipulate the DOM, you likely won't have the same automatic sanitization as with Angular interpolations. Avoid directly interacting with the DOM and instead use Angular templates where possible.
+
+For cases where this is unavoidable, use `DomSanitizer.sanitize` method and the appropriate `SecurityContext` to sanitize untrusted values.
+
+```ts
+export class SomeComponent {
+  content = this.domSanitizer.sanitize(
+    SecurityContext.HTML,
+    `<img src="" alt="" onerror="alert('You have been attacked')" />` // This data coule be come from outside API
+  );
+
+  constructor(private domSanitizer: DomSanitizer) {}
+}
 ```
 
 **[Back to top](#table-of-contents)**

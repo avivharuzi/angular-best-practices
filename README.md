@@ -796,7 +796,7 @@ To be on the safe side we should use the safe navigation operator while accessin
 
 Use `InjectionToken` in case you are not using classes as dependency injection.
 
-***Why***: When using string instead of InjectionToken it can be led to conflicts.
+***Why***: When using `string` instead of `InjectionToken` it can be led to conflicts.
 
 `InjectionToken` variable name should be written as **UPPER_CASE** with **TOKEN** prefix.
 

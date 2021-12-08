@@ -790,7 +790,9 @@ To be on the safe side we should use the safe navigation operator while accessin
 
 ## Prevent Importing Module in Feature Modules
 
-You can easily prevent from importing the module in feature modules by checking who called the class.
+You can easily prevent from importing the module in feature modules and to enforce it to be used only in the `AppModule` (the root module) by checking who trying to create the class.
+
+***Why***: It helps by accidentally providing the module on unappropriated modules and providing dependencies with configuration easier.
 
 Please notice I provide the `AuthService` in the `forRoot` static method because I want to make sure the developer who want to use this service provide me also the configuration object.
 

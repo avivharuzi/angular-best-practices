@@ -1040,6 +1040,8 @@ ng build --stats-json # Build angular with stats JSON file
 webpack-bundle-analyzer dist/my-app/stats.json
 ```
 
+**[Back to top](#table-of-contents)**
+
 ## Use Reactive Forms
 
 Angular presents two different methods for creating forms: `template-driven` and `reactive forms`. Reactive forms provide a model-driven approach to handling form inputs whose values change over time. The Reactive approach removes validation logic from the template, keeping the templates clean of validation logic. Reactive forms use an explicit and immutable approach to managing the state of a form at a given point in time. Each change to the form state returns a new state, which maintains the integrity of the model between changes.

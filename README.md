@@ -56,6 +56,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Base Component Classes](#base-component-classes)
 1. [Do Not Remove View Encapsulation](#do-not-remove-view-encapsulation)
 1. [Analyze the Bundle Size](#analyze-the-bundle-size)
+1. [Use CSP To Prevent XSS](#use-csp-to-prevent-xss)
 1. [Use Reactive Forms](#use-reactive-forms)
 1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
 1. [Use Angular Service Workers and PWA](#use-angular-service-workers-and-pwa)
@@ -1104,6 +1105,14 @@ npm i -D webpack-bundle-analyzer
 ng build --stats-json # Build angular with stats JSON file
 webpack-bundle-analyzer dist/my-app/stats.json
 ```
+
+**[Back to top](#table-of-contents)**
+
+## Use CSP To Prevent XSS
+
+CSP (Content Security Policy) help us to prevent XSS attacks very easily by restricting what resources can be used in the website.
+
+[How to use CSP](https://developers.google.com/web/fundamentals/security/csp)
 
 **[Back to top](#table-of-contents)**
 

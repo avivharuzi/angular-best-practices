@@ -53,6 +53,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Avoid Using Third-Party Libraries](#avoid-using-third-party-libraries)
 1. [Base Component Classes](#base-component-classes)
 1. [Do Not Remove View Encapsulation](#do-not-remove-view-encapsulation)
+1. [Analyze the Bundle Size](#analyze-the-bundle-size)
 1. [Use Reactive Forms](#use-reactive-forms)
 1. [Use CDK Virtual Scroll](#use-cdk-virtual-scroll)
 1. [Use Angular Service Workers and PWA](#use-angular-service-workers-and-pwa)
@@ -1024,6 +1025,20 @@ Create a base class component may come in handy when we have lots of reused stuf
 In Angular, component CSS styles are encapsulated into the component's view and don't affect the rest of the application. To control how this encapsulation happens on a per component basis, we can set the view encapsulation mode in the component metadata. The default is `Emulated`, and it emulates the behavior of `Shadow DOM` by preprocessing the CSS code to effectively scope the CSS to the component's view. In the `None` mode, styles from the component propagate back to the main HTML and therefore are visible to all components on the page. We can use this option, but we need to be careful and adopt other strategies like nested CSS or naming conventions.
 
 **[Back to top](#table-of-contents)**
+
+## Analyze the Bundle Size
+
+There is a great tool [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) that can help us to identify how much size every library consume in the final bundle.
+
+***Why***: Knowing what library or import impact on the final bundle can help us to shrink the size of the bundle by maybe removing the library or replace it with lighter one.
+
+The usage is very easy:
+
+```shell
+npm i -D webpack-bundle-analyzer
+ng build --stats-json # Build angular with stats JSON file
+webpack-bundle-analyzer dist/my-app/stats.json
+```
 
 ## Use Reactive Forms
 

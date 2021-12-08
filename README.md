@@ -38,6 +38,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Avoid Computing Values in the Template](#avoid-computing-values-in-the-template)
 1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
+1. [Prevent Importing Module in Feature Modules](#prevent-importing-module-in-feature-modules)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
 1. [Use Smart and Dumb Components](#use-smart-and-dumb-components)
 1. [Use Lazy Loading](#use-lazy-loading)
@@ -783,6 +784,59 @@ To be on the safe side we should use the safe navigation operator while accessin
 <ng-container *ngif="movie">
   <p>{{ movie.details?.description }}</p>
 </ng-container>
+```
+
+**[Back to top](#table-of-contents)**
+
+## Prevent Importing Module in Feature Modules
+
+You can easily prevent from importing the module in feature modules by checking who called the class.
+
+Please notice I provide the `AuthService` in the `forRoot` static method because I want to make sure the developer who want to use this service provide me also the configuration object.
+
+```ts
+import {
+  ModuleWithProviders,
+  NgModule,
+  Optional,
+  SkipSelf,
+} from '@angular/core';
+
+import {
+  AUTH_CONFIG_TOKEN,
+  AuthConfig,
+  authConfigDefault,
+  AuthService,
+} from './auth';
+
+@NgModule()
+export class AuthModule {
+  constructor(@Optional() @SkipSelf() parentModule?: AuthModule) {
+    if (parentModule) {
+      throw new Error(
+        'AuthModule is already loaded. Import it in the AppModule only'
+      );
+    }
+  }
+
+  static forRoot(
+    config: Partial<AuthConfig> = {}
+  ): ModuleWithProviders<AuthModule> {
+    return {
+      ngModule: AuthModule,
+      providers: [
+        AuthService,
+        {
+          provide: AUTH_CONFIG_TOKEN,
+          useValue: {
+            ...authConfigDefault,
+            ...config,
+          },
+        },
+      ],
+    };
+  }
+}
 ```
 
 **[Back to top](#table-of-contents)**

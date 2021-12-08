@@ -955,6 +955,8 @@ If you decided to use third-party library try to explain to the team why it was 
 
 ***Why***: Angular comes with a great set of built-in libraries such as routing, forms, HTTP Client, testing and many more. When deciding to add third-party library the bundle size will become bigger and that resulting to slower performance. 
 
+**[Back to top](#table-of-contents)**
+
 ## Base Component Classes
 
 Create a base class component may come in handy when we have lots of reused stuff and don't want to pollute each component with the same code all over. Common situations are when we are creating form components, when we have pages with the same behavior, such as pages with HTML forms. In these examples, having the same code in multiple places means that if we want to make a change to the logic in that code, we must do it in multiple places. We can create a base class with the common data and methods. Thus, we don't have the same duplicate code in different locations in the code base.

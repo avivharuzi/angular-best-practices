@@ -38,6 +38,7 @@ Angular guide for teams that look for consistency through best practices.
 1. [Avoid Computing Values in the Template](#avoid-computing-values-in-the-template)
 1. [Use Immutability](#use-immutability)
 1. [Safe Navigation Operator in HTML Template](#safe-navigation-operator-in-html-template)
+1. [Use InjectionToken for Dependency Injection](#use-injectiontoken-for-dependency-injection)
 1. [Prevent Importing Module in Feature Modules](#prevent-importing-module-in-feature-modules)
 1. [Break Down Into Small Reusable Components](#break-down-into-small-reusable-components)
 1. [Use Smart and Dumb Components](#use-smart-and-dumb-components)
@@ -785,6 +786,63 @@ To be on the safe side we should use the safe navigation operator while accessin
 <ng-container *ngif="movie">
   <p>{{ movie.details?.description }}</p>
 </ng-container>
+```
+
+**[Back to top](#table-of-contents)**
+
+## Use InjectionToken for Dependency Injection
+
+`InjectionToken` is both unique and symbolic, a JavaScript object that has a friendly name but won't conflict with another token that happens to have the same name.
+
+Use `InjectionToken` in case you are not using classes as dependency injection.
+
+***Why***: When using string instead of InjectionToken it can be led to conflicts.
+
+`InjectionToken` variable name should be written as **UPPER_CASE** with **TOKEN** prefix.
+
+***Why***: It will allow the developer to recognize it's `InjectionToken` which can be provided.
+
+**Before**
+
+```ts
+@NgModule({
+  providers: [
+    {
+      provide: 'TITLE',
+      useValue: 'My Site',
+    },
+  ],
+})
+export class SomeModule {}
+```
+
+**After**
+
+```ts
+import { InjectionToken } from '@angular/core';
+
+export const TITLE_TOKEN = new InjectionToken<string>('title');
+```
+
+```ts
+@NgModule({
+  providers: [
+    {
+      provide: TITLE_TOKEN,
+      useValue: 'My Site',
+    },
+  ],
+})
+export class SomeModule {}
+```
+
+```ts
+@Injectable({
+  provided: 'root',
+})
+export class SomeService {
+  constructor(@Inject(TITLE_TOKEN) private readonly title: string) {}
+}
 ```
 
 **[Back to top](#table-of-contents)**
